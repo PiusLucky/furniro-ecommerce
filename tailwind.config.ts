@@ -18,6 +18,23 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        primary: "#B88E2F",
+        customBlack: "#333333",
+        customGray: "#666666",
+        error: "#E97171",
+        success:"#2EC1AC"
+      },
+      backgroundImage: {
+         "hero": "url(/images/hero.png)"
+      },
+      fontSize: {
+         "normal": "16px",
+         "header": "40px",
+         "large": "52px",
+         "20": "20px",
+         "24": "24px",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

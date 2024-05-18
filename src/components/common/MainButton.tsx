@@ -48,10 +48,10 @@ const MainButton = forwardRef<HTMLButtonElement, MainButtonProps>(
 
     const size_height =
       size === "normal"
-        ? "h-[3.1215rem]"
+        ? "h-[70px]"
         : size === "large"
-        ? "h-[3.75rem]"
-        : "h-[2.625rem]";
+        ? "h-[74px]"
+        : "h-[70px";
 
     const variant_hover =
       variant === "primary" ? "hover:bg-primary" : "hover:bg-secondary";
@@ -61,7 +61,7 @@ const MainButton = forwardRef<HTMLButtonElement, MainButtonProps>(
         form={form}
         className={`${
           isSecondaryVariant ? " text-white  bg-secondary" : "bg-primary"
-        } text-white shadow-xl ${propWidth} md:${propWidth}  select-none rounded-[0.625rem] hover:opacity-90 ${variant_hover} ${size_height} ${classes}`}
+        } text-white font-bold  ${propWidth} md:${propWidth}  select-none rounded-[0px] hover:opacity-90 ${variant_hover} ${size_height} ${classes}`}
         onClick={!disabled ? action : () => undefined}
         type={isSubmitable ? "submit" : "button"}
         ref={ref}
@@ -89,7 +89,7 @@ const MainButton = forwardRef<HTMLButtonElement, MainButtonProps>(
       </Button>
     ) : (
       <Button
-        className={`bg-primary text-white ${propWidth} md:${propWidth} select-none rounded-[0.625rem] cursor-not-allowed ${size_height} ${
+        className={`bg-primary text-white ${propWidth} md:${propWidth} select-none rounded-[0px] cursor-not-allowed ${size_height} ${
           classes ? classes : ""
         }`}
         ref={ref}
