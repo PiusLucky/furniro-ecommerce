@@ -26,7 +26,8 @@ const config = {
         success:"#2EC1AC"
       },
       backgroundImage: {
-         "hero": "url(/images/hero.png)"
+         "hero": "url(/images/hero.png)",
+         "shop-hero": "url(/images/shop_hero.png)",
       },
       fontSize: {
          "normal": "16px",
