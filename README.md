@@ -1,6 +1,8 @@
 # Furnieo Ecommerce
 A fullstack ecommerce application built with Nextjs, Shadcn, Zod, MongoDB, Stripe and Framer motion.
 
+![Thumbnail1](https://github.com/PiusLucky/furniro-ecommerce/assets/32282934/6e93da77-ec95-4cb4-b678-3e2baea955a3)
+
 # Youtube
 
 
