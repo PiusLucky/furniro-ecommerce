@@ -1,8 +1,8 @@
+import ProductCard from "@/components/cards/ProductCard";
+import MainButton from "@/components/common/MainButton";
 import React from "react";
-import ProductCard from "../cards/ProductCard";
-import MainButton from "../common/MainButton";
 
-function OurProductSection() {
+function ProductDetailRelatedSection() {
   const data = [
     {
       id: "1",
@@ -90,7 +90,7 @@ function OurProductSection() {
   return (
     <section className="w-full overflow-x-hidden">
       <div>
-        <p className="text-[32px] font-bold text-center">Our Product</p>
+        <p className="text-[32px] font-bold text-center">Related Products</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[20px] mt-[30px]">
         {data.map((item, index) => (
@@ -107,4 +107,4 @@ function OurProductSection() {
   );
 }
 
-export default OurProductSection;
+export default ProductDetailRelatedSection;

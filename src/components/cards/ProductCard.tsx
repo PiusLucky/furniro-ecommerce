@@ -3,10 +3,12 @@
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React from "react";
 import MainButton from "../common/MainButton";
+import { useRouter } from "next/navigation";
 
 interface IProps {
+  id: string;
   imageUrl: string;
   title: string;
   description: string;
@@ -17,6 +19,7 @@ interface IProps {
 }
 
 function ProductCard({
+  id,
   imageUrl,
   title,
   description,
@@ -25,6 +28,7 @@ function ProductCard({
   type,
   typeValue,
 }: IProps) {
+  const router = useRouter();
   const icons = [
     {
       iconUrl: "/images/share_icon.png",
@@ -33,8 +37,11 @@ function ProductCard({
     },
     {
       iconUrl: "/images/compare_icon.png",
-      title: "Compare",
-      action: () => {},
+      title: "View",
+
+      action: () => {
+        router.push(`/shop/product/${id}`);
+      },
     },
     {
       iconUrl: "/images/like_icon.png",
@@ -108,7 +115,11 @@ function ProductCard({
           </div>
           <div className="flex justify-between mt-[24px]">
             {icons.map((icon, index) => (
-              <div className="flex gap-1 items-center" key={index}>
+              <div
+                className="flex gap-1 items-center hover:cursor-pointer"
+                key={index}
+                onClick={icon.action}
+              >
                 <div>
                   <img src={icon.iconUrl} alt="icon" />
                 </div>

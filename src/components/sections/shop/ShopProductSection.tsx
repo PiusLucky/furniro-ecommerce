@@ -4,6 +4,7 @@ import React from "react";
 function ShopProductSection() {
   const data = [
     {
+      id: "10",
       imageUrl: "/images/p_1.png",
       title: "Syltherine",
       description: "Stylish cafe chair",
@@ -13,6 +14,7 @@ function ShopProductSection() {
       typeValue: "-30%",
     },
     {
+      id: "20",
       imageUrl: "/images/p_2.png",
       title: "Leviosa",
       description: "Stylish cafe chair",
@@ -22,6 +24,7 @@ function ShopProductSection() {
       typeValue: "-30%",
     },
     {
+      id: "30",
       imageUrl: "/images/p_3.png",
       title: "Lolito",
       description: "Luxury big sofa",
@@ -31,6 +34,7 @@ function ShopProductSection() {
       typeValue: "-50%",
     },
     {
+      id: "40",
       imageUrl: "/images/p_4.png",
       title: "Respira",
       description: "Outdoor bar table and stool",
@@ -40,6 +44,7 @@ function ShopProductSection() {
       typeValue: "New",
     },
     {
+      id: "50",
       imageUrl: "/images/p_5.png",
       title: "Grifo",
       description: "Night lamp",
@@ -50,6 +55,7 @@ function ShopProductSection() {
     },
 
     {
+      id: "60",
       imageUrl: "/images/p_6.png",
       title: "Muggo",
       description: "Small mug",
@@ -59,6 +65,7 @@ function ShopProductSection() {
       typeValue: "New",
     },
     {
+      id: "70",
       imageUrl: "/images/p_7.png",
       title: "Pingky",
       description: "Cute bed set",
@@ -69,6 +76,7 @@ function ShopProductSection() {
     },
 
     {
+      id: "80",
       imageUrl: "/images/p_8.png",
       title: "Potty",
       description: "Minimalist flower pot",
@@ -78,6 +86,7 @@ function ShopProductSection() {
       typeValue: "New",
     },
     {
+      id: "90",
       imageUrl: "/images/p_1.png",
       title: "Syltherine",
       description: "Stylish cafe chair",
@@ -87,6 +96,7 @@ function ShopProductSection() {
       typeValue: "-30%",
     },
     {
+      id: "100",
       imageUrl: "/images/p_2.png",
       title: "Leviosa",
       description: "Stylish cafe chair",
@@ -96,6 +106,7 @@ function ShopProductSection() {
       typeValue: "-30%",
     },
     {
+      id: "110",
       imageUrl: "/images/p_3.png",
       title: "Lolito",
       description: "Luxury big sofa",
@@ -105,6 +116,7 @@ function ShopProductSection() {
       typeValue: "-50%",
     },
     {
+      id: "120",
       imageUrl: "/images/p_4.png",
       title: "Respira",
       description: "Outdoor bar table and stool",
@@ -114,6 +126,7 @@ function ShopProductSection() {
       typeValue: "New",
     },
     {
+      id: "130",
       imageUrl: "/images/p_5.png",
       title: "Grifo",
       description: "Night lamp",
@@ -124,6 +137,7 @@ function ShopProductSection() {
     },
 
     {
+      id: "140",
       imageUrl: "/images/p_6.png",
       title: "Muggo",
       description: "Small mug",
@@ -133,6 +147,7 @@ function ShopProductSection() {
       typeValue: "New",
     },
     {
+      id: "150",
       imageUrl: "/images/p_7.png",
       title: "Pingky",
       description: "Cute bed set",
@@ -143,6 +158,7 @@ function ShopProductSection() {
     },
 
     {
+      id: "160",
       imageUrl: "/images/p_8.png",
       title: "Potty",
       description: "Minimalist flower pot",

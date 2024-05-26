@@ -20,6 +20,7 @@ const config = {
     extend: {
       colors: {
         primary: "#B88E2F",
+        "primary-light": "#F9F1E7",
         customBlack: "#333333",
         customGray: "#666666",
         error: "#E97171",
