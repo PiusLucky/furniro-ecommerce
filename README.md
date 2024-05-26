@@ -6,7 +6,8 @@ A fullstack ecommerce application built with Nextjs, Shadcn, Zod, MongoDB, Strip
 # Youtube
 - MODULE 1: https://youtu.be/g1MY5ngwS0o
 - MODULE 2: https://youtu.be/KifP9huzlD4
-- MODULE 3: Coming soon...
+- MODULE 3: https://youtu.be/xA0jpBYzkaQ
+- MODULE 4: Coming soon...
 
 # ☁️ Deployed link
 https://furniro-ecommerce-blue.vercel.app/
