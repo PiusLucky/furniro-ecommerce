@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google"
 import './globals.css'
 import NavBar from '@/components/common/NavBar'
 import FooterSection from '@/components/sections/FooterSection'
+import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
   title: 'Furniro Ecommerce',
@@ -24,6 +25,7 @@ export default function RootLayout({
       <main className="bg-white">
       <NavBar />
       {children}
+      <Toaster />
       <div className="mt-[56px]">
         <FooterSection />
       </div>

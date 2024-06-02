@@ -49,11 +49,11 @@ function FooterSection() {
           <div>
             <img src="/images/footer_logo.png" alt="footer logo" />
           </div>
-          <p className="text-customGray mt-[50px]">
+          <div className="text-customGray mt-[50px]">
             400 University Drive Suite 200 Coral
             <br /> Gables,
             <br /> FL 33134 USA
-          </p>
+          </div>
         </div>
         <div>
           <p className="text-customGray text-normal mb-[55px]">Links</p>

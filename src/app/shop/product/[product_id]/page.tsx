@@ -18,7 +18,7 @@ export default function ProductDetailPage({
     <div className="mt-24 lg:mt-8">
       <ProductDetailTopSection product_id={params.product_id} />
       <div className="mt-8 px-4 md:px-[50px] lg:px-[100px]">
-        <ProductDetailShowcaseSection />
+        <ProductDetailShowcaseSection productId={params.product_id} />
       </div>
       <div className="my-[40px]">
         <Separator />
