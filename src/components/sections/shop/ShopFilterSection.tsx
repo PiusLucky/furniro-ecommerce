@@ -33,7 +33,7 @@ function ShopFilterSection() {
         <div className="hidden md:block">
           <Separator
             orientation="vertical"
-            className="h-[37px] border border-[#9F9F9F]"
+            className="h-[37px] border border-customGray2"
           />
         </div>
         <p className="text-normal">Showing 1 - 16 of 32 results</p>

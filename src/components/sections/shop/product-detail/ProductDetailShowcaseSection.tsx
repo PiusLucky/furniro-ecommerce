@@ -169,7 +169,7 @@ export default function ProductDetailShowcaseSection({
           <ReactStars count={5} color1="#FFC700" size={24} color2={"#FFC700"} />
           <Separator
             orientation="vertical"
-            className="h-[40px] border border-[#9F9F9F]"
+            className="h-[40px] border border-customGray2"
           />
           <p>5 Customer Review</p>
         </div>
@@ -202,7 +202,7 @@ export default function ProductDetailShowcaseSection({
         </div>
 
         <div className="flex gap-[18px] items-center mt-32">
-          <div className="inline-flex h-[64px] px-[15px] gap-[35px] items-center border border-[#9F9F9F] rounded-[10px]">
+          <div className="inline-flex h-[64px] px-[15px] gap-[35px] items-center border border-customGray2 rounded-[10px]">
             <MinusIcon
               className="cursor-pointer"
               onClick={handleQuantityDecrement}

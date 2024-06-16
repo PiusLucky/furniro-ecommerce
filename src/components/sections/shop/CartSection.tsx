@@ -1,7 +1,10 @@
+"use client";
+
 import MainButton from "@/components/common/MainButton";
 import { Separator } from "@/components/ui/separator";
 import { cartAtom } from "@/storage/jotai";
 import { useAtom } from "jotai";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export default function CartSection({
@@ -11,6 +14,7 @@ export default function CartSection({
 }) {
   const [subTotal, setSubTotal] = useState(0);
   const [products, setProducts] = useAtom(cartAtom);
+  const router = useRouter();
 
   const removeProductFromCart = (productId: number | string) => {
     const filteredProducts = products.filter(
@@ -94,6 +98,7 @@ export default function CartSection({
               <MainButton
                 text="Checkout"
                 classes="bg-white hover:bg-white text-black  border border-black rounded-[50px] h-[40px] w-[150px]"
+                action={() => router.push("/checkout")}
               />
             </div>
           </div>
