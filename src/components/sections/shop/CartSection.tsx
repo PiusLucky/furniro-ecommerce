@@ -4,7 +4,8 @@ import MainButton from "@/components/common/MainButton";
 import { Separator } from "@/components/ui/separator";
 import { cartAtom } from "@/storage/jotai";
 import { useAtom } from "jotai";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
+
 import React, { useEffect, useState } from "react";
 
 export default function CartSection({

@@ -3,8 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,7 +12,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import {
   Select,
   SelectContent,
@@ -23,33 +20,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Countries from "@/lib/json/country.json";
+import { BillingInfoInputValidation } from "@/lib/validations";
+import makeApiCallService from "@/lib/service/apiService";
+import { useEffect, useState } from "react";
+import MainButton from "../common/MainButton";
+import { billingAtom } from "@/storage/jotai";
+import { useAtom } from "jotai";
 
-const FormSchema = z.object({
-  firstName: z.string().min(2, {
-    message: "First name must be at least 2 characters.",
-  }),
-  lastName: z.string().min(2, {
-    message: "Last name must be at least 2 characters.",
-  }),
-  company: z.string(),
-  country: z.string().min(1, "Country required field"),
-  street: z.string().min(3, "Street required field"),
-  town: z.string().min(3, "Town required field"),
-  province: z.string().min(3, "Province required field"),
-  zipCode: z.string().min(3, "Zip code required field"),
-  phone: z
-    .string()
-    .min(7, {
-      message: "Phone required field",
-    })
-    .max(20, {
-      message: "Zip code required field",
-    }),
-  email: z.string().email(),
-  additionalInfo: z.string(),
-});
+const FormSchema = BillingInfoInputValidation;
 
 export function CheckoutBillingForm() {
+  const [billingInfo, setBillingInfo] = useAtom(billingAtom);
+  const [isLoading, setIsLoading] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -67,20 +50,65 @@ export function CheckoutBillingForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    setIsLoading(true);
+
+    if (billingInfo) {
+      await makeApiCallService("/api/billing", {
+        method: "PUT",
+        body: { data, billingId: billingInfo?._id },
+      })
+        .then((res) => {
+          // NOTE: Save ID into localStorage => Persisting state
+          setBillingInfo(res?.response?.data);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setIsLoading(false);
+        });
+    } else {
+      await makeApiCallService("/api/billing", {
+        method: "POST",
+        body: data,
+      })
+        .then((res) => {
+          // NOTE: Save ID into localStorage => Persisting state
+          setBillingInfo(res?.response?.data);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setIsLoading(false);
+        });
+    }
   }
+
+  useEffect(() => {
+    async function fetchBillingInfo() {
+      if (billingInfo) {
+        form.setValue("firstName", billingInfo?.firstName);
+        form.setValue("lastName", billingInfo?.lastName);
+        form.setValue("company", billingInfo?.company);
+        form.setValue("country", billingInfo?.country);
+        form.setValue("street", billingInfo?.street);
+        form.setValue("town", billingInfo?.town);
+        form.setValue("province", billingInfo?.province);
+        form.setValue("zipCode", billingInfo?.zipCode);
+        form.setValue("phone", billingInfo?.phone);
+        form.setValue("email", billingInfo?.email);
+        form.setValue("additionalInfo", billingInfo?.additionalInfo);
+        setRefreshKey(Math.random());
+      }
+    }
+
+    fetchBillingInfo();
+  }, [billingInfo]);
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 pb-32">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="w-full space-y-6 pb-32"
+      >
         <p className="font-bold text-[36px]">Billing details</p>
         <div className="flex gap-[31px] w-full">
           <div className="flex-grow">
@@ -130,6 +158,7 @@ export function CheckoutBillingForm() {
         />
 
         <FormField
+          key={refreshKey}
           control={form.control}
           name="country"
           render={({ field }) => (
@@ -145,7 +174,7 @@ export function CheckoutBillingForm() {
                   </SelectTrigger>
                   <SelectContent>
                     {Countries.map((country, index) => (
-                      <SelectItem key={index} value={country.code}>
+                      <SelectItem key={index} value={country.name}>
                         {country.name}
                       </SelectItem>
                     ))}
@@ -254,8 +283,13 @@ export function CheckoutBillingForm() {
             </FormItem>
           )}
         />
-
-        <Button type="submit">Save Billing Info</Button>
+        <div className="mt-6">
+          <MainButton
+            text="Save Billing Info"
+            isSubmitable
+            isLoading={isLoading}
+          />
+        </div>
       </form>
     </Form>
   );
