@@ -33,6 +33,9 @@ npm install && npm run dev
 - Shadcn
 - Tailwind
 - Framer Motion
+- Stripe
+- Next Server Actions
+  
 
 ## 🔓 Benefits
 - Mobile Responsiveness
