@@ -15,7 +15,7 @@ export interface IBilling {
   additionalInfo: string;
 }
 
-const BllingSchema = new Schema(
+const BillingSchema = new Schema(
   {
     firstName: {
       type: String,
@@ -66,6 +66,6 @@ const BllingSchema = new Schema(
 );
 
 const BillingModel =
-  models?.BillingModel || model("BillingModel", BllingSchema);
+  models?.BillingModel || model("BillingModel", BillingSchema);
 
 export default BillingModel;

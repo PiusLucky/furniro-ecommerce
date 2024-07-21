@@ -2,11 +2,17 @@
 
 import MainButton from "@/components/common/MainButton";
 import { Separator } from "@/components/ui/separator";
-import { cartAtom } from "@/storage/jotai";
+import { useToast } from "@/components/ui/use-toast";
+import makeApiCallService from "@/lib/service/apiService";
+import { billingAtom, cartAtom } from "@/storage/jotai";
 import { useAtomValue } from "jotai";
+import { useState } from "react";
 
 function CheckoutDetailSection() {
+  const [loading, setLoading] = useState(false);
   const products = useAtomValue(cartAtom);
+  const billing = useAtomValue(billingAtom);
+  const { toast } = useToast();
 
   const computeSubTotal = () => {
     let total = 0;
@@ -14,6 +20,42 @@ function CheckoutDetailSection() {
       total += Number(product.quantity) * Number(product.unitPrice);
     }
     return total;
+  };
+
+  const handleCheckout = async () => {
+    if (!billing?._id) {
+      toast({
+        variant: "destructive",
+        title: "Empty Billing Info",
+        description: "Kindly fill your billing information",
+      });
+
+      return;
+    }
+    setLoading(true);
+    await makeApiCallService("/api/payment", {
+      method: "POST",
+      body: {
+        billingId: billing?._id,
+        products: products.map((product) => {
+          return {
+            id: product.id,
+            qty: product.quantity,
+          };
+        }),
+      },
+    })
+      .then((res) => {
+        if (typeof window !== undefined) {
+          if (res?.response?.data?.url) {
+            window.location = res?.response?.data?.url;
+          }
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -58,6 +100,8 @@ function CheckoutDetailSection() {
         <MainButton
           text="Place order"
           classes="bg-white hover:bg-white border  border-black rounded-[15px] h-[55px] text-black"
+          isLoading={loading}
+          action={handleCheckout}
         />
       </div>
     </section>

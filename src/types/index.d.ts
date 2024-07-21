@@ -11,3 +11,8 @@ interface IResponse {
     data: any;
   };
 }
+
+interface IProductInput {
+  id: string;
+  qty: number;
+}

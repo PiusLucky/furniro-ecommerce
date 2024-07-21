@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import React from "react";
 import MainButton from "../common/MainButton";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
+
 
 interface IProps {
   id: string;
@@ -34,14 +35,6 @@ function ProductCard({
       iconUrl: "/images/share_icon.png",
       title: "Share",
       action: () => {},
-    },
-    {
-      iconUrl: "/images/compare_icon.png",
-      title: "View",
-
-      action: () => {
-        router.push(`/shop/product/${id}`);
-      },
     },
     {
       iconUrl: "/images/like_icon.png",
@@ -109,11 +102,12 @@ function ProductCard({
         <div className="pt-[30%]">
           <div className="flex justify-center">
             <MainButton
-              text="Add to cart"
+              text="View product"
               classes="bg-white text-primary font-bold hover:bg-white"
+              action={() => router.push(`/shop/product/${id}`)}
             />
           </div>
-          <div className="flex justify-between mt-[24px]">
+          <div className="flex justify-center gap-5 mt-[24px]">
             {icons.map((icon, index) => (
               <div
                 className="flex gap-1 items-center hover:cursor-pointer"

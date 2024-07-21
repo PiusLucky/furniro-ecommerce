@@ -11,7 +11,7 @@ export async function createBillingInfo(input: IBilling) {
 
 export async function updateBillingInfo(input: IBilling, billingId: string) {
   await connectToDatabase();
-  const a = await BillingModel.updateOne(
+  await BillingModel.updateOne(
     {
       _id: billingId,
     },

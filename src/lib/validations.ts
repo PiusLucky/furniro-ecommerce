@@ -24,3 +24,19 @@ export const BillingInfoInputValidation = z.object({
   email: z.string().email(),
   additionalInfo: z.string(),
 });
+
+export const PaymentInputValidation = z.object({
+  billingId: z.string().min(2, {
+    message: "billingId  ",
+  }),
+  products: z.array(
+    z.object({
+      id: z.string().min(1, {
+        message: "Product ID is required",
+      }),
+      qty: z.number().min(1, {
+        message: "Product Qty is required",
+      }),
+    })
+  ),
+});

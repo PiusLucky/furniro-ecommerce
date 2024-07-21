@@ -28,6 +28,7 @@
     "react-hook-form": "^7.52.0",
     "react-remove-scroll": "^2.5.10",
     "react-stars": "^2.2.5",
+    "stripe": "^16.2.0",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
